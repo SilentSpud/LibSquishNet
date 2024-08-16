@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFrameworks>net462;net8.0</TargetFrameworks>
     <Authors>MaxxWyndham</Authors>
     <Title>LibSquishNet</Title>
     <Description>A .net port of Simon Brown%27s libsquish</Description>
