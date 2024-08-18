@@ -11,9 +11,10 @@
     <VersionPrefix>2.1.0</VersionPrefix>
     <VersionSuffix></VersionSuffix>
     <Description>A .net port of Simon Brown's libsquish</Description>
-    <PackageLicenseFile>license</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/MaxxWyndham/LibSquishNet</PackageProjectUrl>
-    <PackageReleaseNotes>v2.1.0 - Now with parallelism!</PackageReleaseNotes>
+    <PackageReleaseNotes>v2.1.0 - Parallelism and broader framework support</PackageReleaseNotes>
     <IncludeContentInPack>true</IncludeContentInPack>
     <Company>C# by Maxx Wyndham, original by Simon Brown</Company>
     <AssemblyVersion>2.1.0.0</AssemblyVersion>
@@ -36,6 +37,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="license" Pack="true" PackagePath="" Visible="true" />
+    <None Include="LICENSE" Pack="true" PackagePath="" Visible="true" />
+    <None Include="..\README.md" Pack="true" PackagePath="" Visible="true" />
   </ItemGroup>
 </Project>
