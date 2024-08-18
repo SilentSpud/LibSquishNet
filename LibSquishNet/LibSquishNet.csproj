@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFrameworks>net462;net8.0</TargetFrameworks>
+    <TargetFrameworks>net462;net481;net6.0;net8.0</TargetFrameworks>
+    <SelfContained>false</SelfContained>
     <Platform>Any CPU</Platform>
     <Authors>MaxxWyndham</Authors>
     <AssemblyTitle>LibSquishNet</AssemblyTitle>
@@ -25,12 +26,7 @@
   </PropertyGroup>
 
   <Target Name="PackageInfo" DependsOnTargets="Build">
-    <GetPackOutputItemsTask
-      PackageVersion="$(AssemblyVersion)" 
-      PackageId="$(AssemblyTitle)" 
-      PackageOutputPath="$(BaseOutputPath)\Release" 
-      NuspecOutputPath="$(BaseOutputPath)\Release" 
-      SymbolPackageFormat="snupkg" />
+    <GetPackOutputItemsTask PackageVersion="$(AssemblyVersion)" PackageId="$(AssemblyTitle)" PackageOutputPath="$(BaseOutputPath)\Release" NuspecOutputPath="$(BaseOutputPath)\Release" SymbolPackageFormat="snupkg" />
   </Target>
 
   <ItemGroup>

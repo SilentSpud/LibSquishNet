@@ -19,6 +19,8 @@ jobs:
         with:
           dotnet-version: | 
             4.6.2
+            4.8.1
+            6.0.x
             8.0.x
 
       - name: Restore NuGet Packages
