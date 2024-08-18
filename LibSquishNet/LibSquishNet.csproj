@@ -1,47 +1,45 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net462;net8.0</TargetFrameworks>
-    <Authors>MaxxWyndham</Authors>
-    <Title>LibSquishNet</Title>
-    <Description>A .net port of Simon Brown%27s libsquish</Description>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageProjectUrl>https://github.com/MaxxWyndham/LibSquishNet</PackageProjectUrl>
-    <PackageReleaseNotes>
-      v2.0.0
-      - Now with parallelism!
-    </PackageReleaseNotes>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-  </PropertyGroup>
-  <PropertyGroup>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <GenerateNuspecDependsOn>$(GenerateNuspecDependsOn);ReadPackageVersionFromOutputAssembly</GenerateNuspecDependsOn>
-  </PropertyGroup>
-  <Target Name="ReadPackageVersionFromOutputAssembly" DependsOnTargets="Build">
-    <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
-      <Output TaskParameter="Assemblies" ItemName="PackAssembly" />
-    </GetAssemblyIdentity>
-    <PropertyGroup>
-      <PackageVersion>%(PackAssembly.Version)</PackageVersion>
-    </PropertyGroup>
-  </Target>
-  <PropertyGroup>
     <OutputType>Library</OutputType>
+    <TargetFrameworks>net462;net8.0</TargetFrameworks>
+    <Platform>Any CPU</Platform>
+    <Authors>MaxxWyndham</Authors>
     <AssemblyTitle>LibSquishNet</AssemblyTitle>
-    <Company>C# by Maxx Wyndham, original by Simon Brown</Company>
     <Product>LibSquishNet</Product>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <FileVersion>2.0.0.0</FileVersion>
+    <Title>LibSquishNet</Title>
+    <VersionPrefix>2.1.0</VersionPrefix>
+    <VersionSuffix></VersionSuffix>
+    <Description>A .net port of Simon Brown's libsquish</Description>
+    <PackageLicenseFile>license</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/MaxxWyndham/LibSquishNet</PackageProjectUrl>
+    <PackageReleaseNotes>v2.1.0 - Now with parallelism!</PackageReleaseNotes>
+    <IncludeContentInPack>true</IncludeContentInPack>
+    <Company>C# by Maxx Wyndham, original by Simon Brown</Company>
+    <AssemblyVersion>2.1.0.0</AssemblyVersion>
+    <FileVersion>2.1.0.0</FileVersion>
   </PropertyGroup>
+
+  <PropertyGroup>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <GenerateNuspecDependsOn>$(GenerateNuspecDependsOn);PackageInfo</GenerateNuspecDependsOn>
+  </PropertyGroup>
+
+  <Target Name="PackageInfo" DependsOnTargets="Build">
+    <GetPackOutputItemsTask
+      PackageVersion="$(AssemblyVersion)" 
+      PackageId="$(AssemblyTitle)" 
+      PackageOutputPath="$(BaseOutputPath)\Release" 
+      NuspecOutputPath="$(BaseOutputPath)\Release" 
+      SymbolPackageFormat="snupkg" />
+  </Target>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="NuGet.Build.Tasks.Pack">
-      <Version>6.11.0</Version>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
+    <PackageReference Include="NuGet.Build.Tasks.Pack" Version="6.11.0" PrivateAssets="all" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
   </ItemGroup>
+
   <ItemGroup>
-    <None Pack="true" PackagePath="" Update="LICENSE" />
+    <None Include="license" Pack="true" PackagePath="" Visible="true" />
   </ItemGroup>
 </Project>
